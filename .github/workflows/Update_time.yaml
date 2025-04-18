@@ -1,0 +1,28 @@
+#===============================================
+# By：Jejz
+#===============================================
+
+
+name: Update_time
+
+on:
+  schedule:
+    - cron: '0 0 */16 * *'
+  workflow_dispatch:
+
+jobs:
+  Update_time:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@main
+    - name: Checkin
+      run: |
+        echo `TZ=UTC-8 date +"%Y-%m-%d %H:%M:%S"` 喵喵喵......我来啦😁😁😁 > time.log
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        git add .
+        git commit -m "Update time.log" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
