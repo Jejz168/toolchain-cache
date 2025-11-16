@@ -6,8 +6,8 @@
 name: Update_time
 
 on:
-  schedule:
-    - cron: '0 0 */16 * *'
+  #schedule:
+  #  - cron: '0 0 */16 * *'
   workflow_dispatch:
 
 jobs:
